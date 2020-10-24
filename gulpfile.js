@@ -10,6 +10,9 @@ const
     // HTML
     nunjucks = require('gulp-nunjucks'),
     htmlmin = require('gulp-htmlmin'),
+      
+    // IMAGE
+    imagemin = require('gulp-imagemin'),
 
     // CSS
     sass = require('gulp-sass'),
@@ -25,7 +28,7 @@ const
 
     webserver = require('gulp-webserver');
 
-function themeFiles() {
+function clean() {
     return del(['readonly_docs_theme', 'dist', 'build']);
 }
 
@@ -40,6 +43,12 @@ function themeFiles() {
 function themeSVG() {
     return gulp.src('src/theme/svg/**')
         .pipe(svgmin())
+        .pipe(gulp.dest('readonly_docs_theme/static'));
+}
+
+function themeImg() {
+    return gulp.src('src/theme/img/**')
+        .pipe(imagemin())
         .pipe(gulp.dest('readonly_docs_theme/static'));
 }
 
@@ -97,18 +106,17 @@ function themeJSgetText() {
     return shell('babel', 'python', ['setup.py', 'extract_messages', '-o', 'readonly_docs_theme/theme.pot']);
 }
 
-const themeBuild = gulp.series(themeFiles, themeSVG, themeScripts, themeScss, themeJS, themeJSLib, themeJSWorker, themeJSgetText);
+const themeBuild = gulp.series(themeFiles, themeSVG, themeImg, themeScripts, themeScss, themeJS, themeJSLib, themeJSWorker, themeJSgetText);
 
 const watch = gulp.series(themeBuild, function watch() {
     gulp.watch('src/theme/{*.py,{static,templates}/**}', themeFiles);
     gulp.watch('src/theme/svg/**', themeSVG);
+    gulp.watch('src/theme/img/**', themeImg);
     gulp.watch('src/theme/scripts/**', themeScripts);
     gulp.watch('src/theme/scss/**', themeScss);
     gulp.watch('src/theme/js/*.js', gulp.series(themeJS, themeJSgetText));
     gulp.watch('src/theme/js/offline/worker.js', themeJSWorker);
 });
-
-gulp.task('theme', ['theme:watch']);
 
 exports.theme = themeBuild;
 exports.clean = clean;
