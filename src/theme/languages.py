@@ -3,18 +3,16 @@ import os.path
 
 import babel
 import requests
+from sphinx.util import logging
 
 from . import __version__
-
 
 LOCAL_LANGUAGES_FILE = os.path.join(os.path.dirname(__file__), 'languages.json')
 LANGUAGES_FILE = 'build/languages.json'
 languages = None
 
-
 def get_language_code(locale_code):
     return languages[locale_code]['code']
-
 
 def get_language_display_name(locale_code):
     lang = languages[locale_code]
@@ -33,7 +31,6 @@ def get_language_display_name(locale_code):
             lang['display_name'] = lang['name']
 
     return lang['display_name']
-
 
 def load_languages():
     global languages
@@ -67,7 +64,6 @@ def load_languages():
         with open(LANGUAGES_FILE, 'w+') as f:
             json.dump(languages, f)
 
-
 def init(app):
     # Return if we are not doing a HTML build
     if app.builder.name != 'html':
@@ -82,10 +78,9 @@ def init(app):
     if not app.config.language:
         return
 
-    app.info('Loading languages...')
+    logging.getLogger(__name__).info('Loading languages...')
     load_languages()
-    app.info('%d languages loaded' % len(languages))
-
+    logging.getLogger(__name__).info('%d languages loaded' % len(languages))
 
 # This is the entry point if this module is loaded as a Sphinx extension
 def setup(app):
