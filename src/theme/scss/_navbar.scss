@@ -126,7 +126,6 @@ $ro_logo_width: 250px;
 }
 
 .wy-side-nav-search {
-  // Use yellow brand color for sidebar header
   background: linear-gradient(#9a6d31, #fbf4a1);
 
   // Search box
@@ -156,9 +155,9 @@ $ro_logo_width: 250px;
   a {
     @extend .readonly-logo;
 
-    // Display Spongie mark before header (we can't easily modify the HTML here
+    // Display mark before header (we can't easily modify the HTML here
     // so we do it using CSS)
-    background: url('spongie-mark-dark.svg') no-repeat;
+    background: url('readonly-mark.svg') no-repeat;
     padding-left: 34px; // Keep space for Spongie mark
   }
 }
