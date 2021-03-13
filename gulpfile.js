@@ -26,6 +26,7 @@ const
 
     spawn = require('child_process').spawn,
 
+    connect = require('gulp-connect');
     webserver = require('gulp-webserver');
 
 function clean() {

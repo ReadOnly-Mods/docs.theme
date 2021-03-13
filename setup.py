@@ -10,7 +10,7 @@ setup(
     license='MIT',
 
     packages=['readonly_docs_theme'],
-    install_requires=['sphinx_rtd_theme==0.1.9'],
+    install_requires=['sphinx_rtd_theme==0.5.1'],
 
     message_extractors={
         'src/theme/js': [
