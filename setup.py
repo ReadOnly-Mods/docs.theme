@@ -5,8 +5,8 @@ setup(
     name='readonly-docs-theme',
     version=readonly_docs_theme.__version__,
     description='Theme for ReadOnly Mods documentation',
-    url='https://github.com/ReadOnly-Mods/readonly-docs-theme',
-    author='ReadOnly-Mods',
+    url='https://github.com/ReadOnlyDevelopment/readonly-docs-theme',
+    author='ReadOnlyDevelopment',
     license='MIT',
 
     packages=['readonly_docs_theme'],

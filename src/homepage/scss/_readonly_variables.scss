@@ -1,0 +1,14 @@
+// Brand colors
+$readonly_yellow: #f7cf0d;
+$readonly_dark_yellow: #917300;
+$readonly_grey: #333333;
+$readonly_dark_grey: shade($readonly_grey, 15%);
+
+$readonly_headline_font: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+.readonly-headline {
+  font-family: $readonly_headline_font;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
