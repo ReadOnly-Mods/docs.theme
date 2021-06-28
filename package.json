@@ -16,7 +16,7 @@
     "gulp-nunjucks": "^5.0.1",
     "gulp-postcss": "^9.0.0",
     "gulp-sass": "^4.0.1",
-    "gulp-svgmin": "^3.0.0",
+    "gulp-svgmin": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "plugin-error": "^1.0.1",
     "gulp-webserver": "^0.9.1",
