@@ -30,6 +30,6 @@
     "build-homepage": "gulp homepage:build"
   },
   "dependencies": {
-    "gulp-imagemin": "^7.1.0"
+    "gulp-imagemin": "^8.0.0"
   }
 }
